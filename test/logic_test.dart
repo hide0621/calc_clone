@@ -29,4 +29,12 @@ void main() {
     logic.input('3');
     expect(logic.text, '3');
   });
+
+  test("連続でテスト", () {
+    expect(logic.text, '0');
+    logic.input('1');
+    expect(logic.text, '1');
+    logic.input('2');
+    expect(logic.text, '12');
+  });
 }
