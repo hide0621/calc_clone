@@ -78,5 +78,20 @@ void main() {
       logic.input('9');
       expect(logic.text, '1.23456789');
     });
+
+    test('0.00000000', () {
+      expect(logic.text, '0');
+      logic.input('0');
+      logic.input('.');
+      logic.input('0');
+      logic.input('0');
+      logic.input('0');
+      logic.input('0');
+      logic.input('0');
+      logic.input('0');
+      logic.input('0');
+      logic.input('0');
+      expect(logic.text, '0.00000000');
+    });
   });
 }
