@@ -94,4 +94,25 @@ void main() {
       expect(logic.text, '0.00000000');
     });
   });
+
+  group("getDisplayText", () {
+    test("整数", () {
+      expect(logic.getDisplayText(0), '0');
+      expect(logic.getDisplayText(1), '1');
+      expect(logic.getDisplayText(1234), '1,234');
+      expect(logic.getDisplayText(56789), '56,789');
+      expect(logic.getDisplayText(123456789), '123,456,789');
+    });
+
+    test("0の時", () {
+      expect(logic.getDisplayText(0, numAfterPoint: 0), '0.');
+      expect(logic.getDisplayText(0, numAfterPoint: 1), '0.0');
+      expect(logic.getDisplayText(0, numAfterPoint: 8), '0.00000000');
+    });
+
+    test("小数点以下のみの時", () {
+      expect(logic.getDisplayText(0.1, numAfterPoint: 1), '0.1');
+      expect(logic.getDisplayText(0.12345678, numAfterPoint: 8), '0.12345678');
+    });
+  });
 }
