@@ -112,7 +112,7 @@ void main() {
 
     test("小数点以下のみの時", () {
       expect(logic.getDisplayText(0.1, numAfterPoint: 1), '0.1');
-      expect(logic.getDisplayText(0.12345678, numAfterPoint: 8), '0.12345678');
+      expect(logic.getDisplayText(0.12345678, numAfterPoint: 1), '0.12345678');
     });
   });
 }
