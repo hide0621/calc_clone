@@ -115,7 +115,7 @@ void main() {
       expect(logic.getDisplayText(0.12345678, numAfterPoint: 1), '0.12345678');
     });
 
-    test("1以上で小数点かある時", () {
+    test("1以上で小数点がある時", () {
       expect(logic.getDisplayText(1.1, numAfterPoint: 1), '1.1');
       expect(logic.getDisplayText(12345.678, numAfterPoint: 1), '12,345.678');
     });
