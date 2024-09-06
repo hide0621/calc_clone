@@ -128,4 +128,85 @@ void main() {
       expect(logic.getDisplayText(12345.000, numAfterPoint: 3), '12,345.000');
     });
   });
+
+  group('getNumberOfDigits', () {
+    test('同値クラステスト', () {
+      expect(logic.getNumberOfDigits(0), 1);
+      expect(logic.getNumberOfDigits(1), 1);
+      expect(logic.getNumberOfDigits(12), 2);
+      expect(logic.getNumberOfDigits(123), 3);
+      expect(logic.getNumberOfDigits(1234), 4);
+      expect(logic.getNumberOfDigits(12345), 5);
+      expect(logic.getNumberOfDigits(123456), 6);
+      expect(logic.getNumberOfDigits(1234567), 7);
+      expect(logic.getNumberOfDigits(12345678), 8);
+      expect(logic.getNumberOfDigits(123456789), 9);
+    });
+
+    test('境界値テスト', () {
+      expect(logic.getNumberOfDigits(0), 1);
+      expect(logic.getNumberOfDigits(1), 1);
+      expect(logic.getNumberOfDigits(9), 1);
+      expect(logic.getNumberOfDigits(10), 2);
+      expect(logic.getNumberOfDigits(11), 2);
+
+      expect(logic.getNumberOfDigits(99), 2);
+      expect(logic.getNumberOfDigits(100), 3);
+      expect(logic.getNumberOfDigits(101), 3);
+
+      expect(logic.getNumberOfDigits(99999999), 8);
+      expect(logic.getNumberOfDigits(100000000), 9);
+      expect(logic.getNumberOfDigits(100000001), 9);
+      expect(logic.getNumberOfDigits(999999999), 9);
+    });
+  });
+
+  group('9桁以上は無視', () {
+    test('整数', () {
+      logic.input('1');
+      logic.input('2');
+      logic.input('3');
+      logic.input('4');
+      logic.input('5');
+      logic.input('6');
+      logic.input('7');
+      logic.input('8');
+      logic.input('9');
+      expect(logic.text, '123,456,789');
+      logic.input('0');
+      expect(logic.text, '123,456,789');
+    });
+    test('小数あり', () {
+      logic.input('1');
+      logic.input('2');
+      logic.input('3');
+      logic.input('.');
+      logic.input('4');
+      logic.input('5');
+      logic.input('6');
+      logic.input('7');
+      logic.input('8');
+      logic.input('9');
+      expect(logic.text, '123.456789');
+      logic.input('0');
+      logic.input('9');
+      expect(logic.text, '123.456789');
+    });
+
+    test('小数あり2', () {
+      logic.input('0');
+      logic.input('.');
+      logic.input('1');
+      logic.input('2');
+      logic.input('3');
+      logic.input('.');
+      logic.input('4');
+      logic.input('5');
+      logic.input('6');
+      logic.input('7');
+      logic.input('8');
+      logic.input('9');
+      expect(logic.text, '0.12345678');
+    });
+  });
 }

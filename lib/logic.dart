@@ -171,7 +171,7 @@ class Logic {
 
     /// 以下のコードは、上記のコードと同じ結果を返す
     // int i = 0;
-    // while(value >= 10) {
+    // while (value >= 10) {
     //   value = value / 10;
     //   i++;
     // }
