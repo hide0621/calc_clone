@@ -209,4 +209,33 @@ void main() {
       expect(logic.text, '0.12345678');
     });
   });
+
+  group("かけ算", () {
+    test('2x3=6', () {
+      logic.input('2');
+      expect(logic.text, '2');
+      expect(logic.currentValue, 2);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 0);
+
+      logic.input('x');
+      expect(logic.previousOperation, 'x');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 2);
+      expect(logic.memorialValue, 0);
+      expect(logic.text, '2');
+
+      logic.input('3');
+      expect(logic.text, '3');
+      expect(logic.currentValue, 3);
+      expect(logic.previousValue, 2);
+      expect(logic.memorialValue, 0);
+
+      logic.input('=');
+      expect(logic.text, '6');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 0);
+    });
+  });
 }
