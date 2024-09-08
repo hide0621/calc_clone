@@ -237,5 +237,17 @@ void main() {
       expect(logic.previousValue, 0);
       expect(logic.memorialValue, 0);
     });
+
+    test('2x3x4x5=120', () {
+      logic.input('2');
+      logic.input('x');
+      logic.input('3');
+      logic.input('x');
+      logic.input('4');
+      logic.input('x');
+      logic.input('5');
+      logic.input('=');
+      expect(logic.text, '120');
+    });
   });
 }
