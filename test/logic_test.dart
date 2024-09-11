@@ -127,6 +127,18 @@ void main() {
       expect(logic.getDisplayText(1.0, numAfterPoint: 1), '1.0');
       expect(logic.getDisplayText(12345.000, numAfterPoint: 3), '12,345.000');
     });
+
+    test('四捨五入', () {
+      expect(logic.getDisplayText(10 / 3, numAfterPoint: 8), '3.33333333');
+      expect(logic.getDisplayText(1 / 3, numAfterPoint: 8), '0.33333333');
+
+      expect(logic.getDisplayText(100 / 3, numAfterPoint: 7), '33.3333333');
+
+      expect(logic.getDisplayText(20000 / 3, numAfterPoint: 5), '6,666.66667');
+      expect(logic.getDisplayText(2000 / 3, numAfterPoint: 6), '666.666667');
+      expect(logic.getDisplayText(20 / 3, numAfterPoint: 8), '6.66666667');
+      expect(logic.getDisplayText(2 / 3, numAfterPoint: 8), '0.66666667');
+    });
   });
 
   group('getNumberOfDigits', () {
