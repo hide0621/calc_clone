@@ -279,5 +279,17 @@ void main() {
       expect(logic.previousValue, 0);
       expect(logic.memorialValue, 0);
     });
+
+    test("120/3/4=10", () {
+      logic.input('1');
+      logic.input('2');
+      logic.input('0');
+      logic.input('/');
+      logic.input('3');
+      logic.input('/');
+      logic.input('4');
+      logic.input('=');
+      expect(logic.text, '10');
+    });
   });
 }
