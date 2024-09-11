@@ -250,4 +250,34 @@ void main() {
       expect(logic.text, '120');
     });
   });
+
+  group("わり算", () {
+    test('10/2=5', () {
+      logic.input('1');
+      logic.input('0');
+      expect(logic.text, '10');
+      expect(logic.currentValue, 10);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 0);
+
+      logic.input('/');
+      expect(logic.previousOperation, '/');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 10);
+      expect(logic.memorialValue, 0);
+      expect(logic.text, '10');
+
+      logic.input('2');
+      expect(logic.text, '2');
+      expect(logic.currentValue, 2);
+      expect(logic.previousValue, 10);
+      expect(logic.memorialValue, 0);
+
+      logic.input('=');
+      expect(logic.text, '5');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 0);
+    });
+  });
 }
