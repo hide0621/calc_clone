@@ -321,5 +321,13 @@ void main() {
       expect(logic.round(99999998.5, 0), 99999999);
       expect(logic.round(99999999.499, 0), 99999999);
     });
+
+    test('小数点以下1桁', () {
+      expect(logic.round(1.04, 1), 1);
+      expect(logic.round(1.05, 1), 1.1);
+      expect(logic.round(1.1, 1), 1.1);
+      expect(logic.round(1.14, 1), 1.1);
+      expect(logic.round(1.15, 1), 1.2);
+    });
   });
 }
