@@ -343,5 +343,13 @@ void main() {
       expect(logic.round(1234.00014, 4), 1234.0001);
       expect(logic.round(1234.00015, 4), 1234.0002);
     });
+
+    test('小数点以下7桁', () {
+      expect(logic.round(1.00000004, 7), 1.0000000);
+      expect(logic.round(1.00000005, 7), 1.0000001);
+      expect(logic.round(1.0000001, 7), 1.0000001);
+      expect(logic.round(1.00000014, 7), 1.0000001);
+      expect(logic.round(1.00000015, 7), 1.0000002);
+    });
   });
 }
