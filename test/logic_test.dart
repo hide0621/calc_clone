@@ -304,4 +304,22 @@ void main() {
       expect(logic.text, '10');
     });
   });
+
+  group("round", () {
+    test('小数点以下0桁', () {
+      expect(logic.round(1.1, 0), 1);
+
+      // 2の分け目
+      expect(logic.round(1.499, 0), 1);
+      expect(logic.round(1.500, 0), 2);
+      expect(logic.round(2.0, 0), 2);
+      expect(logic.round(2.49, 0), 2);
+      expect(logic.round(2.5, 0), 3);
+
+      // 最大値
+      expect(logic.round(99999998.4, 0), 99999998);
+      expect(logic.round(99999998.5, 0), 99999999);
+      expect(logic.round(99999999.499, 0), 99999999);
+    });
+  });
 }
