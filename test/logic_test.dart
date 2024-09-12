@@ -329,5 +329,19 @@ void main() {
       expect(logic.round(1.14, 1), 1.1);
       expect(logic.round(1.15, 1), 1.2);
     });
+
+    test('小数点以下4桁', () {
+      expect(logic.round(1.00004, 4), 1.0000);
+      expect(logic.round(1.00005, 4), 1.0001);
+      expect(logic.round(1.0001, 4), 1.0001);
+      expect(logic.round(1.00014, 4), 1.0001);
+      expect(logic.round(1.00015, 4), 1.0002);
+
+      expect(logic.round(1234.00004, 4), 1234.0000);
+      expect(logic.round(1234.00005, 4), 1234.0001);
+      expect(logic.round(1234.0001, 4), 1234.0001);
+      expect(logic.round(1234.00014, 4), 1234.0001);
+      expect(logic.round(1234.00015, 4), 1234.0002);
+    });
   });
 }
