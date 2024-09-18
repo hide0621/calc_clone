@@ -305,6 +305,36 @@ void main() {
     });
   });
 
+  group("たし算", () {
+    test('2+3=5', () {
+      logic.input('2');
+      expect(logic.text, '2');
+      expect(logic.currentValue, 2);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 0);
+
+      logic.input('+');
+      expect(logic.previousOperation, '');
+      expect(logic.memorialOperation, '+');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 2);
+      expect(logic.text, '2');
+
+      logic.input('3');
+      expect(logic.text, '3');
+      expect(logic.currentValue, 3);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 2);
+
+      logic.input('=');
+      expect(logic.text, '5');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 0);
+      expect(logic.memorialValue, 0);
+    });
+  });
+
   group("round", () {
     test('小数点以下0桁', () {
       expect(logic.round(1.1, 0), 1);
