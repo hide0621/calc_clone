@@ -375,6 +375,19 @@ void main() {
       expect(logic.previousValue, 0);
       expect(logic.memorialValue, 0);
     });
+
+    test('20-1-2-3=14', () {
+      logic.input('2');
+      logic.input('0');
+      logic.input('-');
+      logic.input('1');
+      logic.input('-');
+      logic.input('2');
+      logic.input('-');
+      logic.input('3');
+      logic.input('=');
+      expect(logic.text, '14');
+    });
   });
 
   group("round", () {
