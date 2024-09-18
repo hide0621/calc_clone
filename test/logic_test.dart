@@ -333,6 +333,18 @@ void main() {
       expect(logic.previousValue, 0);
       expect(logic.memorialValue, 0);
     });
+
+    test('2+3+4+5=14', () {
+      logic.input('2');
+      logic.input('+');
+      logic.input('3');
+      logic.input('+');
+      logic.input('4');
+      logic.input('+');
+      logic.input('5');
+      logic.input('=');
+      expect(logic.text, '14');
+    });
   });
 
   group("round", () {
