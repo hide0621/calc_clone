@@ -390,6 +390,18 @@ void main() {
     });
   });
 
+  group("四則演算混在", () {
+    test('足し算引き算', () {
+      logic.input('3');
+      logic.input('+');
+      logic.input('4');
+      logic.input('-');
+      logic.input('5');
+      logic.input('=');
+      expect(logic.text, '2');
+    });
+  });
+
   group("round", () {
     test('小数点以下0桁', () {
       expect(logic.round(1.1, 0), 1);
