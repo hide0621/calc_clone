@@ -1,8 +1,10 @@
 # calc_clone
 
-Udemyの以下の教材に基づくものです
+Udemyの以下の教材に基づくものです（コードはiOS版です）
 
 [FlutterでのはじめてのTDD(テスト 駆動開発)！【flutter testで、テストの第一歩から実導入まで】](https://www.udemy.com/course/flutter-tdd/?couponCode=SKILLS4SALEJP)
+
+[サンプルコード](https://github.com/sakushin-udemy/calc_clone_nullsafety)
 
 ## Getting Started
 
