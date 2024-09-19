@@ -188,6 +188,7 @@ void main() {
       logic.input('0');
       expect(logic.text, '123,456,789');
     });
+
     test('小数あり', () {
       logic.input('1');
       logic.input('2');
