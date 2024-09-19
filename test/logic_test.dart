@@ -400,6 +400,16 @@ void main() {
       logic.input('=');
       expect(logic.text, '2');
     });
+
+    test("かけ算わり算", () {
+      logic.input('3');
+      logic.input('x');
+      logic.input('4');
+      logic.input('/');
+      logic.input('6');
+      logic.input('=');
+      expect(logic.text, '2');
+    });
   });
 
   group("round", () {
