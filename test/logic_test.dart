@@ -410,6 +410,24 @@ void main() {
       logic.input('=');
       expect(logic.text, '2');
     });
+
+    test("かけ算足し算", () {
+      logic.input('3');
+      logic.input('x');
+      logic.input('4');
+      logic.input('+');
+
+      expect(logic.memorialValue, 12);
+      expect(logic.text, '12');
+      expect(logic.currentValue, 0);
+      expect(logic.previousValue, 0);
+      expect(logic.previousOperation, '');
+      expect(logic.memorialOperation, '+');
+
+      logic.input('5');
+      logic.input('=');
+      expect(logic.text, '17');
+    });
   });
 
   group("round", () {
