@@ -553,4 +553,18 @@ void main() {
       expect(logic.round(1.00000015, 7), 1.0000002);
     });
   });
+
+  group('初期化', () {
+    test('C', () {
+      logic.input('1');
+      expect(logic.text, '1');
+      logic.input('C');
+      expect(logic.text, '0');
+      expect(logic.memorialOperation, '');
+      expect(logic.previousOperation, '');
+      expect(logic.currentValue, 0);
+      expect(logic.memorialValue, 0);
+      expect(logic.previousValue, 0);
+    });
+  });
 }
