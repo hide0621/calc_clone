@@ -83,5 +83,19 @@ void main() {
       expect(material.color, Colors.black);
       expect(material.textStyle?.color, Colors.white);
     });
+
+    testWidgets("2", (tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: Button("2", Colors.white, Colors.black, null),
+      ));
+
+      await tester.pump();
+
+      Finder finder = find.byType(Material);
+      Material material = tester.widget(finder);
+
+      expect(material.color, Colors.white);
+      expect(material.textStyle?.color, Colors.black);
+    });
   });
 }
