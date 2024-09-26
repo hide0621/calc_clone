@@ -5,6 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets("Button", (tester) async {
     /// テストコードを記述
+    ///
+    /// ウィジェットテストでは実際にエミュレータ（実機含む）を使わずとも、
+    /// 下記の記述をすることでウィジェットのテストが可能
     await tester.pumpWidget(
 
         /// テスト対象のウィジェットを指定
