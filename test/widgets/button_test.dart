@@ -77,9 +77,11 @@ void main() {
 
       await tester.pump();
 
+      /// MaterialApp内のウィジェット（今回はButtonウィジェット）を取得
       Finder finder = find.byType(Material);
       Material material = tester.widget(finder);
 
+      /// 上記で取得したButtonウィジェットの背景色とテキストの色をアサーション
       expect(material.color, Colors.black);
       expect(material.textStyle?.color, Colors.white);
     });
