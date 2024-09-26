@@ -43,5 +43,24 @@ void main() {
       /// 上記でのタップをもとに、テスト対象のウィジェットが作成されたか確認
       expect(result, "1");
     });
+
+    testWidgets("2", (tester) async {
+      String result = "";
+      FunctionOnPressed onPressed = (String text) {
+        result = text;
+      };
+
+      await tester.pumpWidget(MaterialApp(
+        home: Button("2", Colors.black, Colors.white, onPressed),
+      ));
+
+      await tester.pump();
+
+      expect(result, "");
+
+      await tester.tap(find.text("2"));
+
+      expect(result, "2");
+    });
   });
 }
