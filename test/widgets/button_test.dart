@@ -69,6 +69,7 @@ void main() {
     });
   });
 
+  /// ダークモードによって色が変わることがあるので、このテストを実装した
   group("色", () {
     testWidgets("1", (tester) async {
       await tester.pumpWidget(MaterialApp(
