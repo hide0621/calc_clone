@@ -19,4 +19,29 @@ void main() {
     expect(find.text("0"), findsOneWidget);
     expect(find.text("1"), findsNothing);
   });
+
+  group("押された時の処理", () {
+    testWidgets("1", (tester) async {
+      String result = "";
+      FunctionOnPressed onPressed = (String text) {
+        result = text;
+      };
+
+      await tester.pumpWidget(MaterialApp(
+        home: Button("1", Colors.black, Colors.white, onPressed),
+      ));
+
+      await tester.pump();
+
+      /// ボタンを押す前の状態
+      expect(result, "");
+
+      /// テキスト "1" を持つウィジェットを検索し、タップする
+      Finder finder = find.text("1");
+      await tester.tap(finder);
+
+      /// 上記でのタップをもとに、テスト対象のウィジェットが作成されたか確認
+      expect(result, "1");
+    });
+  });
 }
