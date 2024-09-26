@@ -20,8 +20,10 @@ void main() {
     expect(find.text("1"), findsNothing);
   });
 
+  /// ボタンが押された時[onPressed]の振る舞いをテスト
   group("押された時の処理", () {
     testWidgets("1", (tester) async {
+      /// ボタンが押された時の処理を確認するための変数
       String result = "";
       FunctionOnPressed onPressed = (String text) {
         result = text;
