@@ -68,4 +68,20 @@ void main() {
       expect(result, "2");
     });
   });
+
+  group("色", () {
+    testWidgets("1", (tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: Button("1", Colors.black, Colors.white, null),
+      ));
+
+      await tester.pump();
+
+      Finder finder = find.byType(Material);
+      Material material = tester.widget(finder);
+
+      expect(material.color, Colors.black);
+      expect(material.textStyle?.color, Colors.white);
+    });
+  });
 }
