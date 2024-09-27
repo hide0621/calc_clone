@@ -31,6 +31,7 @@ void main() {
       expect(find.text('.'), findsOneWidget);
 
       /// 演算子は文字ではないので、テキストが存在しないことを確認
+      /// 演算子やパーセントなどは「アイコン」のテストで確認する
       expect(find.text('+'), findsNothing);
       expect(find.text('='), findsNothing);
     });
