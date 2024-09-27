@@ -47,7 +47,8 @@ void main() {
       await tester.pump();
 
       /// キーパッド上にアイコンが表示されているか確認
-      /// アイコンはCupertinoIconsを使用しているため、Cupertinoのアイコンが表示される（iOS用のアプリなので）
+      /// アイコンはCupertinoIconsを使用しているため、Cupertinoのアイコンが表示される
+      /// このアプリはiOS用のため、CupertinoIconsを使用している
       expect(find.byIcon(CupertinoIcons.plus_slash_minus), findsOneWidget);
       expect(find.byIcon(CupertinoIcons.percent), findsOneWidget);
       expect(find.byIcon(CupertinoIcons.divide), findsOneWidget);
