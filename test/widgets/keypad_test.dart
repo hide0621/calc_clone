@@ -18,5 +18,21 @@ void main() {
         expect(find.text(i.toString()), findsOneWidget);
       }
     });
+
+    testWidgets('文字', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KeyPad(null),
+        ),
+      );
+
+      await tester.pump();
+      expect(find.text('C'), findsOneWidget);
+      expect(find.text('.'), findsOneWidget);
+
+      /// 演算子は文字ではないので、テキストが存在しないことを確認
+      expect(find.text('+'), findsNothing);
+      expect(find.text('='), findsNothing);
+    });
   });
 }
