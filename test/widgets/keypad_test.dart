@@ -1,3 +1,4 @@
+import 'package:calc_clone/widgets/button.dart';
 import 'package:calc_clone/widgets/keypad.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,37 @@ void main() {
       expect(find.byIcon(CupertinoIcons.minus), findsOneWidget);
       expect(find.byIcon(CupertinoIcons.plus), findsOneWidget);
       expect(find.byIcon(CupertinoIcons.equal), findsOneWidget);
+    });
+  });
+
+  group("キータップ", () {
+    testWidgets("数字", (tester) async {
+      /// キーパッドでの連続入力を確認するための変数
+      String result = "";
+      FunctionOnPressed onPress = (text) {
+        result = result + text;
+      };
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KeyPad(onPress),
+        ),
+      );
+
+      await tester.pump();
+
+      await tester.tap(find.text("1"));
+      await tester.tap(find.text("2"));
+      await tester.tap(find.text("3"));
+      await tester.tap(find.text("4"));
+      await tester.tap(find.text("5"));
+      await tester.tap(find.text("6"));
+      await tester.tap(find.text("7"));
+      await tester.tap(find.text("8"));
+      await tester.tap(find.text("9"));
+      await tester.tap(find.text("0"));
+
+      expect(result, "1234567890");
     });
   });
 }
