@@ -116,6 +116,8 @@ void main() {
 
       await tester.pump();
 
+      /// 「C.」と文字を連続で入力する場合のテストケース
+      /// 「C」をタップして最初の状態に戻し、その後「.」をタップして小数点を入力する（デフォルトで「0」が表示されているので）
       await tester.tap(find.text("C"));
       await tester.tap(find.text("."));
 
