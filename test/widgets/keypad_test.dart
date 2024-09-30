@@ -152,6 +152,9 @@ void main() {
       await tester.tap(find.byIcon(CupertinoIcons.equal));
 
       expect(result, "+/-%/x-+=");
+
+      /// こっちはこける
+      // expect(result, "+/-%÷x-+=");
     });
   });
 }
