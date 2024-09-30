@@ -87,6 +87,18 @@ void main() {
       await tester.tap(find.text("9"));
       await tester.tap(find.text("0"));
 
+      /// タップ操作のテストについては[await]が必要
+      // tester.tap(find.text("1"));
+      // tester.tap(find.text("2"));
+      // tester.tap(find.text("3"));
+      // tester.tap(find.text("4"));
+      // tester.tap(find.text("5"));
+      // tester.tap(find.text("6"));
+      // tester.tap(find.text("7"));
+      // tester.tap(find.text("8"));
+      // tester.tap(find.text("9"));
+      // tester.tap(find.text("0"));
+
       expect(result, "1234567890");
     });
   });
