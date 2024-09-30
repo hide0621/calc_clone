@@ -118,10 +118,40 @@ void main() {
 
       /// 「C.」と文字を連続で入力する場合のテストケース
       /// 「C」をタップして最初の状態に戻し、その後「.」をタップして小数点を入力する（デフォルトで「0」が表示されているので）
+      /// 「C.」は文字として直接出力されるわけではないが（されるのは「.」のみ）
+      /// キータップのテストのために検証する
       await tester.tap(find.text("C"));
       await tester.tap(find.text("."));
 
       expect(result, "C.");
+    });
+
+    testWidgets("アイコン", (tester) async {
+      String result = "";
+      FunctionOnPressed onPress = (text) {
+        result = result + text;
+      };
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KeyPad(onPress),
+        ),
+      );
+
+      await tester.pump();
+
+      /// アイコンを連続でタップする場合のテストケース
+      /// アイコンは先述の「C.」と同様、直接画面に出力されるわけではないが、
+      /// アイコンのタップ動作のウィジェットテストのために検証する
+      await tester.tap(find.byIcon(CupertinoIcons.plus_slash_minus));
+      await tester.tap(find.byIcon(CupertinoIcons.percent));
+      await tester.tap(find.byIcon(CupertinoIcons.divide));
+      await tester.tap(find.byIcon(CupertinoIcons.multiply));
+      await tester.tap(find.byIcon(CupertinoIcons.minus));
+      await tester.tap(find.byIcon(CupertinoIcons.plus));
+      await tester.tap(find.byIcon(CupertinoIcons.equal));
+
+      expect(result, "+/-%/x-+=");
     });
   });
 }
