@@ -101,5 +101,25 @@ void main() {
 
       expect(result, "1234567890");
     });
+
+    testWidgets("文字", (tester) async {
+      String result = "";
+      FunctionOnPressed onPress = (text) {
+        result = result + text;
+      };
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KeyPad(onPress),
+        ),
+      );
+
+      await tester.pump();
+
+      await tester.tap(find.text("C"));
+      await tester.tap(find.text("."));
+
+      expect(result, "C.");
+    });
   });
 }
