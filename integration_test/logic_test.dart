@@ -1,4 +1,5 @@
 import 'package:calc_clone/main.dart' as app;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -36,6 +37,19 @@ void main() {
       /// 上記に加えて追記
       expect(find.text("x"), findsNothing);
       expect(find.text("-"), findsNothing);
+    });
+
+    testWidgets('icon', (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      expect(find.byIcon(CupertinoIcons.plus_slash_minus), findsOneWidget);
+      expect(find.byIcon(CupertinoIcons.percent), findsOneWidget);
+      expect(find.byIcon(CupertinoIcons.divide), findsOneWidget);
+      expect(find.byIcon(CupertinoIcons.multiply), findsOneWidget);
+      expect(find.byIcon(CupertinoIcons.minus), findsOneWidget);
+      expect(find.byIcon(CupertinoIcons.plus), findsOneWidget);
+      expect(find.byIcon(CupertinoIcons.equal), findsOneWidget);
     });
   });
 }
