@@ -13,6 +13,7 @@ void main() {
       /// 上記のアプリが起動するまで待機（[await]は必須）
       await tester.pumpAndSettle();
 
+      /// 「0」と言う数字テキストはボタン部分と表示部分の両方にあるため以下のようにテストする
       expect(find.text(0.toString()), findsNWidgets(2));
 
       for (int i = 1; i < 10; i++) {
