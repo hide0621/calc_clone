@@ -32,6 +32,10 @@ void main() {
       /// 以下は文字ではなくアイコンで実装しているため、このテスト内容となる
       expect(find.text("+"), findsNothing);
       expect(find.text("="), findsNothing);
+
+      /// 上記に加えて追記
+      expect(find.text("x"), findsNothing);
+      expect(find.text("-"), findsNothing);
     });
   });
 }
