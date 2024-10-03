@@ -20,5 +20,18 @@ void main() {
         expect(find.text(i.toString()), findsOneWidget);
       }
     });
+
+    testWidgets("character", (tester) async {
+      app.main();
+
+      await tester.pumpAndSettle();
+
+      expect(find.text("C"), findsOneWidget);
+      expect(find.text("."), findsOneWidget);
+
+      /// 以下は文字ではなくアイコンで実装しているため、このテスト内容となる
+      expect(find.text("+"), findsNothing);
+      expect(find.text("="), findsNothing);
+    });
   });
 }
