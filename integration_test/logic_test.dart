@@ -37,6 +37,7 @@ void main() {
       /// 上記に加えて追記
       expect(find.text("x"), findsNothing);
       expect(find.text("-"), findsNothing);
+      expect(find.text("%"), findsNothing);
     });
 
     testWidgets('icon', (WidgetTester tester) async {
