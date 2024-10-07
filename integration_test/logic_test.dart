@@ -101,5 +101,33 @@ void main() {
       await tester.pump();
       expect(tester.widget<Text>(resultFinder).data, '123,456,789');
     });
+
+    testWidgets('calc', (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      Finder resultFinder = find.byKey(const Key('txtResult'));
+      expect(tester.widget<Text>(resultFinder).data, '0');
+
+      await tester.tap(find.text('1'));
+      await tester.tap(find.text('2'));
+      await tester.tap(find.text('3'));
+      await tester.tap(find.byIcon(CupertinoIcons.plus));
+      await tester.tap(find.text('1'));
+      await tester.tap(find.text('2'));
+      await tester.pump();
+
+      expect(tester.widget<Text>(resultFinder).data, '12');
+      await tester.tap(find.byIcon(CupertinoIcons.minus));
+
+      await tester.pump();
+      expect(tester.widget<Text>(resultFinder).data, '135');
+      await tester.tap(find.text('3'));
+      await tester.tap(find.text('5'));
+      await tester.tap(find.byIcon(CupertinoIcons.equal));
+
+      await tester.pump();
+      expect(tester.widget<Text>(resultFinder).data, '100');
+    });
   });
 }
