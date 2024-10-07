@@ -12,6 +12,8 @@ void main() {
       app.main();
 
       /// 上記のアプリが起動するまで待機（[await]は必須）
+      /// [pump]との違いは、[pumpAndSettle]はアニメーションを使っている場合の待機操作で
+      /// [pump]はアニメーションを使っていない場合の待機操作
       await tester.pumpAndSettle();
 
       /// 「0」と言う数字テキストはボタン部分と表示部分の両方にあるため以下のようにテストする
@@ -62,6 +64,8 @@ void main() {
       await tester.tap(find.text("1"));
 
       /// 画面が更新（計算結果やタップ操作が反映）されるまで待たせる
+      /// [pump]との違いは、[pumpAndSettle]はアニメーションを使っている場合の待機操作で
+      /// [pump]はアニメーションを使っていない場合の待機操作
       await tester.pump();
 
       expect(find.text("1"), findsNWidgets(2));
