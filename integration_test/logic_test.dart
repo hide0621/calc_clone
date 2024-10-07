@@ -73,5 +73,33 @@ void main() {
       /// 計算結果の部分[main]とButton部分でKeyを指定しているため、以下のテストにより一意に特定してテストができる
       await tester.tap(find.byKey(const Key('1')));
     });
+
+    testWidgets('number', (WidgetTester tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      /// こっちのKeyは[main.dart]のTextクラスで[Key('txtResult')]としているため、このKeyのことを指している
+      Finder resultFinder = find.byKey(const Key('txtResult'));
+      expect(tester.widget<Text>(resultFinder).data, '0');
+
+      await tester.tap(find.text('1'));
+      await tester.tap(find.text('2'));
+      await tester.tap(find.text('3'));
+      await tester.pump();
+      expect(tester.widget<Text>(resultFinder).data, '123');
+
+      await tester.tap(find.text('4'));
+      await tester.tap(find.text('5'));
+      await tester.tap(find.text('6'));
+      await tester.tap(find.text('7'));
+      await tester.tap(find.text('8'));
+      await tester.tap(find.text('9'));
+      await tester.pump();
+      expect(tester.widget<Text>(resultFinder).data, '123,456,789');
+
+      await tester.tap(find.text('0'));
+      await tester.pump();
+      expect(tester.widget<Text>(resultFinder).data, '123,456,789');
+    });
   });
 }
