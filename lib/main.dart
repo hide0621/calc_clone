@@ -1,6 +1,5 @@
 import 'package:calc_clone/widgets/button.dart';
 import 'package:calc_clone/widgets/keypad.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
@@ -57,6 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Text(
                     txtResult,
+
+                    /// 一意にwidgetを特定するために使う
                     key: const Key('txtResult'),
                     style: const TextStyle(
                       color: colorText,

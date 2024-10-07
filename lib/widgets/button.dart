@@ -11,6 +11,7 @@ class Button extends StatelessWidget {
 
   final FunctionOnPressed? onPressed;
 
+  /// Keyを使ってwidgetを一意に特定する
   Button(this.text, this.colorButton, this.colorText, this.onPressed)
       : super(key: Key(text));
 
