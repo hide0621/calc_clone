@@ -53,4 +53,25 @@ void main() {
       expect(find.byIcon(CupertinoIcons.equal), findsOneWidget);
     });
   });
+
+  group("tap", () {
+    testWidgets("tap1", (tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text("1"));
+
+      /// 画面が更新（計算結果やタップ操作が反映）されるまで待たせる
+      await tester.pump();
+
+      expect(find.text("1"), findsNWidgets(2));
+
+      /// 計算結果の部分[main]とButton部分でKeyを指定しているため、以下のテストにより一意に特定してテストができる
+      /// 以下のテストは[button.dart]のButtonクラスで[Key(text)]としているため、このKeyのことを指している
+      expect(find.byKey(const Key("1")), findsOneWidget);
+
+      /// 計算結果の部分[main]とButton部分でKeyを指定しているため、以下のテストにより一意に特定してテストができる
+      await tester.tap(find.byKey(const Key('1')));
+    });
+  });
 }
